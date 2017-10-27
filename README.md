@@ -4,9 +4,23 @@ CfgCrypt or config crypt is a cli tool to encrypt values in a text configuration
 
 ## Concept
 
- The basic idea is that you write your configuration file in whatever text format you prefer using all of the features of that format, and then you run cfgcrypt on the file the encrypt the variable you want hidden. From there your application base 64 decodes the encrypted text, and runs AES 128 decryption, in CBC mode, with PKCS7 padding, using the key from the generated key file. The iv for the decryption is included in the first set of bytes.
+ The basic idea is that you write your configuration file in whatever text format you prefer. Then you run cfgcrypt on the file to encrypt the variables you want hidden. From there your application base 64 decodes the encrypted text, and runs AES 128 decryption, in CBC mode, with PKCS7 padding, using the key from the generated key file. The iv for the decryption is included in the first set of bytes.
 
  So that cfgcrypt knows what to encrypt you must give it a prefix and a postfix string that will delimit the values that you wish to encrypt. These values will be encrypted in-place. If an encryption key is not passed to the utility then one will be randomly generated and placed next to the encrypted file with 0600 file permissions and a ".key" file extension pre-pended to the original file's name.
+
+ ## Decryption logic
+
+ Pseudo-code example of decryption process:
+
+ ```
+ configData = io.ReadConfigFile(fileName)
+ key = io.ReadFileBytes(fileName + ".key")
+ decoded = base64.decode(configData.secretValue)
+ iv = getFirst16Bytes(decoded)
+ encrypted = getBytesAfterFirst16(decoded)
+ cipher = encryption.Mode("AES/CBC/PKCS7Padding")
+ configData.secretValue = cipher.Decrypt(iv, encrypted, key)
+ ```
 
  ## Usage
 
