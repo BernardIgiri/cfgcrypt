@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Run cfgcrypt on this file to see how it is encrypted -->
+<config>
+	<serverSettings>
+		<port>8080</port>
+		<hostname>localhost</hostname>
+	</serverSettings>
+	<database> <!-- database configuration -->
+		<driver>mysqldb</driver>
+		<port>3306</port>
+		<user>myAppUser</user>
+		<!-- password to encrypt -->
+		<password>fhBo0w6x4f/G2RFM602pBqog8V35aa6j8sHcZMEB4KA=</password>
+	</database>
+	<vendorApi url="https://www.vendor.com" key="rfnNsxmR37oMobblfzpcgQXZ2PjjdT5B0pqpCkKxu7DsXOI1iV5V8g+ncV/V/vLH" />
+</config>
