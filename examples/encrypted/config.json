@@ -1,0 +1,16 @@
+{
+	"serverSettings": {
+		"port": 8080,
+		"hostname": "localhost"
+	},
+	"database": {
+		"driver": "mysqldb",
+		"port": 3306,
+		"user": "myAppUser",
+		"password": "f3P30uLNR2m4mAKBQVYvyC94rbA5WbqsZ5MV10vNbQA="
+	},
+	"vendorApi": {
+		"url": "https://www.vendor.com",
+		"key": "8cYLcTC2H+gtKliIoc5FX+pSz5vr+qP257vfRAIY+JcbQgtRQk/lbbQyCjBO9kXG"
+	}
+}

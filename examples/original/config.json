@@ -1,0 +1,16 @@
+{
+	"serverSettings": {
+		"port": 8080,
+		"hostname": "localhost"
+	},
+	"database": {
+		"driver": "mysqldb",
+		"port": 3306,
+		"user": "myAppUser",
+		"password": "#{{password123}}#"
+	},
+	"vendorApi": {
+		"url": "https://www.vendor.com",
+		"key": "#{{APIKEY1234567890}}#"
+	}
+}

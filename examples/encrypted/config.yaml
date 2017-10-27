@@ -1,0 +1,13 @@
+# Run cfgcrypt on this file to see how it is encrypted
+serverSettings:
+        port: 8080
+        hostname: localhost
+database: # database configuration
+        driver: mysqldb
+        port: 3306
+        user: myAppUser
+        ## password to encrypt
+        password: ZqCPJYofruJALcUXSTT39iUe6S1wP1gTvwSYbZdLSvo=
+vendorApi:
+        url: https://www.vendor.com
+        key: L1vJLPnO80Own38boB/A/hV7kKYBsN8TzIDizOarsE+N5Fkk6zU0H8a7Pk2RIe38

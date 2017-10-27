@@ -8,21 +8,19 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/bernardigiri/cfgcrypt/encryption"
 )
 
-const KEY_FILE_NAME = "encryption.key"
+const KEY_FILE_EXTENSION = ".key"
 
 const DEFAULT_KEY_SIZE = 16
 
 const MAX_FILE_SIZE = 1E7
 
 func generateKey(textFilePath string) (key []byte, err error) {
-	directory := filepath.Dir(textFilePath)
-	keyPath := filepath.Join(directory, KEY_FILE_NAME)
+	keyPath := textFilePath + KEY_FILE_EXTENSION
 	key = make([]byte, DEFAULT_KEY_SIZE)
 	if _, err = io.ReadFull(rand.Reader, key); err != nil {
 		return
