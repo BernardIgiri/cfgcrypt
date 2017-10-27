@@ -21,11 +21,16 @@ const MAX_FILE_SIZE = 1E7
 
 func generateKey(textFilePath string) (key []byte, err error) {
 	keyPath := textFilePath + KEY_FILE_EXTENSION
+	if _, statErr := os.Stat(keyPath); !os.IsNotExist(statErr) {
+		msg := fmt.Sprintf("Key file \"%s\" already exists", keyPath)
+		err = errors.New(msg)
+		return
+	}
 	key = make([]byte, DEFAULT_KEY_SIZE)
 	if _, err = io.ReadFull(rand.Reader, key); err != nil {
 		return
 	}
-	ioutil.WriteFile(keyPath, key, 0600)
+	err = ioutil.WriteFile(keyPath, key, 0600)
 	return
 }
 

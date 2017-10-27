@@ -33,5 +33,10 @@ func main() {
 		explainUsage(cli)
 		os.Exit(1)
 	}
-	textValueEncryptor.EncryptTextFile(textfile, *prefix, *postfix, *encodedKey)
+	err := textValueEncryptor.EncryptTextFile(textfile, *prefix, *postfix, *encodedKey)
+	if err != nil {
+		msg := fmt.Sprintf("Error encrypting file \"%s\":\n%s\n", textfile, err.Error())
+		os.Stderr.WriteString(msg)
+		os.Exit(1)
+	}
 }
