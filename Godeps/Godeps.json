@@ -2,5 +2,11 @@
 	"ImportPath": "github.com/bernardigiri/cfgcrypt",
 	"GoVersion": "go1.9",
 	"GodepVersion": "v79",
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "github.com/bernardigiri/go-pkcs7",
+			"Comment": "v1.0.1",
+			"Rev": "709fead0acad5d065ddf664bffe0876e844a6052"
+		}
+	]
 }

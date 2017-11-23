@@ -7,6 +7,8 @@ import (
 	"encoding/base64"
 	"errors"
 	"io"
+
+	"github.com/bernardigiri/go-pkcs7"
 )
 
 func Decrypt(key []byte, encodedCipherText string) (plaintext string, err error) {
@@ -34,7 +36,7 @@ func Decrypt(key []byte, encodedCipherText string) (plaintext string, err error)
 	mode := cipher.NewCBCDecrypter(blockCipher, iv)
 	mode.CryptBlocks(ciphertext, ciphertext)
 	// UNPAD
-	plaintextBytes, err := Unpad(ciphertext, aes.BlockSize)
+	plaintextBytes, err := pkcs7.Unpad(ciphertext, aes.BlockSize)
 	plaintext = string(plaintextBytes)
 	return
 }
@@ -45,7 +47,7 @@ func Encrypt(key []byte, plaintext string) (encodedCipherText string, err error)
 		return
 	}
 	// PAD
-	paddedPlaintext, err := Pad([]byte(plaintext), aes.BlockSize)
+	paddedPlaintext, err := pkcs7.Pad([]byte(plaintext), aes.BlockSize)
 	if err != nil {
 		return
 	}
