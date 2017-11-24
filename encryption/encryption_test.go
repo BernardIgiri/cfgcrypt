@@ -3,7 +3,7 @@ package encryption_test
 import (
 	"testing"
 
-	"github.com/bernardigiri/AESYamlEncryptor/encryption"
+	"github.com/bernardigiri/cfgcrypt/encryption"
 	"github.com/stretchr/testify/assert"
 )
 
