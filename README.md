@@ -33,6 +33,8 @@ CfgCrypt or config crypt is a cli tool to encrypt values in a text configuration
     	Post string denoting end of value to be encrypted (default "}}#")
   -prefix string
     	Prefix string denoting start of value to be encrypted (default "#{{")
+  -force bool
+  	Overwrites key file if it exists
 ```
 
 ## Example

@@ -19,6 +19,7 @@ func main() {
 	encodedKey := cli.String("key", "", "Base64 encoded encryption key, if not specified one will be generated")
 	prefix := cli.String("prefix", "#{{", "Prefix string denoting start of value to be encrypted")
 	postfix := cli.String("postfix", "}}#", "Post string denoting end of value to be encrypted")
+	force := cli.Bool("force", false, "Overwrite key file if found")
 	if len(os.Args) < 2 {
 		os.Stderr.WriteString("Not enough arguments\n")
 		explainUsage(cli)
@@ -33,7 +34,7 @@ func main() {
 		explainUsage(cli)
 		os.Exit(1)
 	}
-	err := textValueEncryptor.EncryptTextFile(textfile, *prefix, *postfix, *encodedKey)
+	err := textValueEncryptor.EncryptTextFile(textfile, *prefix, *postfix, *encodedKey, *force)
 	if err != nil {
 		msg := fmt.Sprintf("Error encrypting file \"%s\":\n%s\n", textfile, err.Error())
 		os.Stderr.WriteString(msg)

@@ -19,9 +19,9 @@ const DEFAULT_KEY_SIZE = 16
 
 const MAX_FILE_SIZE = 1E7
 
-func generateKey(textFilePath string) (key []byte, err error) {
+func generateKey(textFilePath string, force bool) (key []byte, err error) {
 	keyPath := textFilePath + KEY_FILE_EXTENSION
-	if _, statErr := os.Stat(keyPath); !os.IsNotExist(statErr) {
+	if _, statErr := os.Stat(keyPath); !os.IsNotExist(statErr) && !force {
 		msg := fmt.Sprintf("Key file \"%s\" already exists", keyPath)
 		err = errors.New(msg)
 		return
@@ -38,10 +38,10 @@ func isPowerOf2(n int) bool {
 	return (n&(n-1)) == 0 && n > 0
 }
 
-func EncryptTextFile(textFilePath, prefix, postfix, encodedKey string) (err error) {
+func EncryptTextFile(textFilePath, prefix, postfix, encodedKey string, force bool) (err error) {
 	var key []byte
 	if encodedKey == "" {
-		key, err = generateKey(textFilePath)
+		key, err = generateKey(textFilePath, force)
 	} else {
 		key, err = base64.StdEncoding.DecodeString(encodedKey)
 	}
