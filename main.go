@@ -10,7 +10,7 @@ import (
 
 func explainUsage(cli *flag.FlagSet) {
 	fmt.Println("cfgcrypt [textfile] ...")
-	fmt.Println("\ttextfile\tText file to encrypt. (required)")
+	fmt.Println("   textfile    Text file to encrypt. (required)")
 	cli.PrintDefaults()
 }
 

@@ -22,17 +22,20 @@ CfgCrypt or config crypt is a cli tool to encrypt values in a text configuration
 
  ## Usage
 
+To use boolean parameters set -boolvar=true/false
  ```
  cfgcrypt [textfile] ...
-	textfile	Text file to encrypt. (required)
-  -key string
-    	Base64 encoded encryption key, if not specified one will be generated
-  -postfix string
-    	Post string denoting end of value to be encrypted (default "}}#")
-  -prefix string
-    	Prefix string denoting start of value to be encrypted (default "#{{")
-  -force bool
-  	Overwrites key file if it exists
+    textfile    Text file to encrypt. (required)
+   -debug bool
+     	Display detailed error messages
+   -force bool
+     	Overwrite key file if found
+   -key string
+     	Base64 encoded encryption key, if not specified one will be generated
+   -postfix string
+     	Post string denoting end of value to be encrypted (default "}}#")
+   -prefix string
+     	Prefix string denoting start of value to be encrypted (default "#{{")
 ```
 
 ## Example
